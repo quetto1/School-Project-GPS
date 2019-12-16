@@ -1,0 +1,154 @@
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <!-- Scaling for moblie view -->
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <!-- Css links -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/global.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/navbar.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/gps.css') }}">
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/footer.css') }}"> -->
+    <title>GPS</title>
+
+    <!-- mapbox needed links and scripts -->
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+</head>
+
+<body>
+    <!-- Nav bar -->
+    <nav>
+        <div class="logo">
+            <img class="pic" src="{{ url_for('static',filename='pictures/logo.png') }}">
+            <a href="home">
+                <h3>LVAP</h3>
+            </a>
+
+
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="home">Home</a>
+            </li>
+            <li>
+                <a href="gallery">Gallery</a>
+            </li>
+            <li>
+                <a href="gps">GPS</a>
+            </li>
+        </ul>
+
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+
+    </nav>
+    <script src="{{ url_for('static',filename='js/navbar.js') }}"></script>
+    <!-- --------------------------------------------------- -->
+
+    <!-- Map which show the current localization -->
+    <div id="map"></div>
+
+    <!-- Table with the newest records -->
+    <table>
+        <tr>
+            <td>ID</td>
+            <td>X</td>
+            <td>Y</td>
+        </tr>
+        <tr>
+            <td id="ID"></td>
+            <td id="cx"></td>
+            <td id="cy"></td>
+        </tr>
+    </table>
+
+    <script>
+        // Coneccting to our token form our account in the mapbox in order to
+        // show the certain design of the map
+        L.mapbox.accessToken = 'pk.eyJ1IjoicXVldHRvIiwiYSI6ImNrNDFqa3pxazAxczIzZWtreTVjNDBuZ2cifQ.VHuHd6J5QU_99i-maIYhzg';
+        var map = L.mapbox.map('map', 'mapbox.streets', {
+            scrollWheelZoom: false,
+            zoomControl: 5
+        })
+        var myLayer = L.mapbox.featureLayer().addTo(map);
+        var x = document.getElementById('cx').innerHTML;
+        var y = document.getElementById('cy').innerHTML;
+        var zoomMapForTheFirstTime = true;
+        map.scrollWheelZoom.disable();
+        getData()
+
+        function populateMap() {
+            //pos x, y. pulled data from the table which is under the map
+            x = document.getElementById('cx').innerHTML;
+            y = document.getElementById('cy').innerHTML;
+            //remove old layer
+            map.removeLayer(myLayer);
+            myLayer = L.mapbox.featureLayer().addTo(map);
+            // Creating marker 
+            var geojson = [
+                {
+                    type: 'Feature',
+                    geometry: {
+                        type: 'Point',
+                        coordinates: [y, x]
+                    },
+                    properties: {
+                        icon: {
+                            iconUrl: "{{ url_for('static',filename='pictures/bike.png') }}",
+                            iconSize: [50, 50], // size of the icon
+                            iconAnchor: [25, 25], // point of the icon which will correspond to marker's location
+                            popupAnchor: [0, -25], // point from which the popup should open relative to the iconAnchor
+                            className: 'dot'
+                        }
+                    }
+                }
+            ];
+            //add new layer with new position
+            myLayer.on('layeradd', function (e) {
+                var marker = e.layer,
+                    feature = marker.feature;
+                marker.setIcon(L.icon(feature.properties.icon));
+            });
+            myLayer.setGeoJSON(geojson);
+            if(zoomMapForTheFirstTime === true){
+            map.setView([x, y], 14);
+            zoomMapForTheFirstTime = false;
+            }
+        }
+
+        function getData() {
+            var exam = new XMLHttpRequest();
+            exam.onreadystatechange = function () {
+                if (exam.readyState == 4) {
+                    let response = JSON.parse(exam.responseText);
+                    console.log(response);
+                    console.log(document.getElementById("ID").innerHTML);
+                    if(document.getElementById("ID").innerHTML != response.ID) {
+                    document.getElementById("cx").innerHTML = response.X;
+                    document.getElementById("cy").innerHTML = response.Y;
+                    document.getElementById("ID").innerHTML = response.ID;
+                    populateMap();
+                    }
+                }
+            }
+            exam.open("GET", "http://127.0.0.1:5000/json", true);
+            exam.send(null);
+        }
+        function checkDataWithInterval() {
+            getData();
+        }
+        setInterval(function () {
+            checkDataWithInterval();
+        }, 5000);
+    </script>
+
+</body>
+
+</html>

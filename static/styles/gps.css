@@ -1,0 +1,44 @@
+#map {
+    margin-top: 80px;
+    width: 1024px;
+    height: 700px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid rgb(26, 0, 16) 5px;
+}
+
+table,
+td,
+th {
+    border: 1px solid rgb(209, 250, 112);
+    text-align: center;
+}
+
+table {
+    color: rgb(209, 250, 112);
+    border-collapse: collapse;
+    border: solid rgb(209, 250, 112) 2px;
+    background-color: rgb(26, 0, 16);
+    width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    justify-content: space-around;
+    font-size: 20px;
+    margin-bottom: 50px;
+}
+
+th,
+td {
+    /* width: 100%; */
+    padding: 15px;
+}
+
+.marker {
+    display: block;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0;
+}

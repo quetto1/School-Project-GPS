@@ -1,0 +1,235 @@
+.first_row{
+margin-top:5vh;
+display: flex;
+justify-content: space-around;
+padding: 12vh;
+text-align: center;
+font-family:' Roboto Mono', monospace;
+font-size: 22px;
+}
+.about_me{
+    margin-top: 5vh;
+    padding-right:1vh;
+    padding-left: 0px;
+
+}
+#me{ 
+    margin-top:6vh;
+
+    height: 450px;
+    width: 700;
+    border: solid rgb(26, 0, 16) 4px;
+    border-radius: 5%;
+    margin-right: 12vh;
+    transition: 0.3s;
+}
+
+.header5{
+    color: rgb(209, 250, 112);
+    font-size: 40px;
+    text-align: center;
+    margin-top: 2vh;
+font-family:' Roboto Mono', monospace;
+
+}
+.project{
+    margin-top:1vh;
+    justify-content: space-around;
+  padding-left: 10vh;
+   padding-right: 10vh;
+    padding-bottom: 10vh;
+    font-family:' Roboto Mono', monospace;
+    font-size: 22px;
+    text-align: center;
+}
+.game{
+    width: 800px;
+    height: 500px;
+    border: solid black 5px;
+}
+.project p{
+    /* padding: 15vh; */
+    padding-top: 2vh;
+    margin-left: 30vh;
+    margin-right: 30vh;
+
+}
+p.content1{
+    margin-top: 30px;
+}
+@media screen and (max-width:1260px) {
+    .first_row{
+        display: block;
+        padding-top: 2vh;
+    }
+#me{
+    display: block;
+    height: 300px;
+    width: 500px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 5vh;
+}
+.header5{
+    color: rgb(209, 250, 112);
+    font-size: 40px;
+    text-align: center;
+    margin-top: 2vh;
+font-family:' Roboto Mono', monospace;
+
+}
+.game{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 564px;
+    height: 373px;
+
+}
+.project p{
+    padding: 2vh;
+    margin-left: 1vh;
+    margin-right: 1vh;
+}
+.about_me{
+    margin-top: 5vh;
+    padding-right:5px;
+    padding-left: 5px;
+}
+}
+@media screen and (max-width:800px) {
+    #me{
+        margin-bottom: 5vh;
+        height: 280px;
+        width: 450;
+    }
+    /* #me:hover{
+        margin-bottom: 5vh;
+        height: 300px;
+        width: 400;
+    opacity: 1;
+    } */
+    .first_row{
+    padding: 3vh;
+    }
+    .first_row p{
+        font-size: 17px;
+    }
+    .game{
+        width: 400px;
+        height: 200px;
+    }
+    .project{
+        padding: 3vh;
+        padding-left: 1vh;
+        padding-right: 1vh;
+        font-size: 17px;
+    }
+    .header5{
+        font-size: 25px;
+    
+    }
+    .about_me{
+        margin-top: 5vh;
+        padding-right:10px;
+        padding-left: 8px;
+    }
+  
+}
+@media screen and (max-width:500px) {
+    #me{
+        margin-bottom: 5vh;
+        height: 150px;
+        width: 300px;
+    }
+ 
+    .project{
+        padding: none;
+    }
+    .game{
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        width: 300px;
+    }
+  
+}
+    /* -------------------------------- */
+    /* Pictures */
+
+    .pictures{
+        padding: 1%;
+        text-align: center;
+        
+    }
+    .pictures img{
+        
+        /* padding: 2%; */
+        margin-top: 20px;
+
+    }
+    .row1 img{
+        width: 700px;
+        height: 300px;
+
+    }
+    .row2 img{
+        width: 600px;
+        height: 300px;
+        margin-top: 50px;
+
+    }
+   
+    .row3 .postgresql{
+        width: 350px;
+    }
+    .row3 .python{
+        width: 400;
+        height: 350;
+    }
+    @media screen and (max-width:800px){
+
+        .row1 img{
+            width: 400px;
+            height: 150px;
+    
+        }
+        .row2 img{
+            width: 300px;
+            height:150px;
+            margin-top: 50px;
+    
+        }
+       
+        .row3 .postgresql{
+            width: 175px;
+        }
+        .row3 .python{
+            width: 200;
+            height: 175;
+        }
+    }
+    @media screen and (max-width:400px){
+
+        .row1 img{
+            width: 250px;
+            height: 100px;
+    
+        }
+        .row2 img{
+            width: 250px;
+            height:125px;
+            margin-top: 50px;
+    
+        }
+       
+        .row3 .postgresql{
+            width: 200px;
+        }
+        .row3 .python{
+            width: 200;
+            height: 175;
+        }
+    }
+      
+  

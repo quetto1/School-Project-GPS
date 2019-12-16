@@ -1,0 +1,88 @@
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <!-- Scaling for moblie view -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.5">
+    <!-- Css links -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/global.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/navbar.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/home.css') }}">
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/footer.css') }}"> -->
+    <title>Home</title>
+</head>
+
+<body>
+    <!-- Nav bar -->
+    <nav>
+        <div class="logo">
+            <img class="pic" src="{{ url_for('static',filename='pictures/logo.png') }}">
+            <a href="home"><h3>LVAP</h3></a>
+
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="home">Home</a>
+            </li>
+            <li>
+                <a href="gallery">Gallery</a>
+            </li>
+            <li>
+                <a href="gps">GPS</a>
+            </li>
+        </ul>
+
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+    </nav>
+    <script src="{{ url_for('static',filename='js/navbar.js') }}"></script>
+    <!-- --------------------------------------------------- -->
+    <div class="first_row">
+        <img onclick="slap();" id="me" src="{{ url_for('static',filename='pictures/p1.png') }}">
+        <div class="about_me">
+            <!-- <h4>About me</h4> -->
+            <h5 class="header5">About Website</h5>
+            <p class="content1">This small website was made in order to create a tracking system for bikes and
+                display the currnt GPS location on the map. Our tracking hradware
+                is sending the data to the database which then is taken and displayed on the website
+                (Check the "Location" page!). Spend a moment of your time and take a look!
+                Although website is not that entertaining we hope u will like it.
+
+            </p>
+        </div>
+    </div>
+    <div class="project">
+        <a><img class="game" src="{{ url_for('static',filename='pictures/p2.jpg') }}"></a>
+        <h5 class="header5">About Us</h5>
+        <p>From the left Krzysztof, Gabriel, and Krzysztof, dont even try to do the spelling. As you can see
+            we are just just chiling on this picture at the local Aarhus park, after tough day of working, we always
+            remember to rest after work. Most import part of the project is to have fun while doing it even if sometimes
+            things are not going so well. As you can tell by our face expresion on the piture we are always smiling,
+            not even thinking about.... Yeah i dont know what i should write more in this section.
+        </p>
+    </div>
+
+    <h5 class="header5">Used Technologies</h5>
+    <div class="pictures">
+        <div class="row1">
+            <img src="{{ url_for('static',filename='pictures/t1.png') }}" alt="" />
+        </div>
+        <div class="row2">
+            <img src="{{ url_for('static',filename='pictures/t2.png') }}" alt="" />
+        </div>
+        <div class="row3">
+            <img class="postgresql" src="{{ url_for('static',filename='pictures/t3.png') }}" alt="" />
+            <img class="python" src="{{ url_for('static',filename='pictures/t4.png') }}" alt="" />
+        </div>
+
+    </div>
+
+
+
+</body>
+
+</html>

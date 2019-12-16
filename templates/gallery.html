@@ -1,0 +1,53 @@
+<html>
+
+<head>
+        <meta charset="utf-8">
+        <!-- Scaling for moblie view -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.5">
+        <!-- Css links -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/global.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/navbar.css') }}">
+        <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/footer.css') }}"> -->
+        <title>Gallery</title>
+
+
+
+</head>
+
+<body>
+  <!-- Nav bar -->
+  <nav>
+        <div class="logo">
+            <img class="pic" src="{{ url_for('static',filename='pictures/logo.png') }}">
+            <a href="home"><h3>LVAP</h3></a>
+
+
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="home">Home</a>
+            </li>
+            <li>
+                <a href="gallery">Gallery</a>
+            </li>
+            <li>
+                <a href="gps">GPS</a>
+            </li>
+        </ul>
+
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+
+    </nav>
+    <script src="{{ url_for('static',filename='js/navbar.js') }}"></script>
+    <!-- --------------------------------------------------- -->
+
+
+
+
+</body>
+
+</html>
